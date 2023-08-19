@@ -58,7 +58,7 @@ const handler =  async (req: NextApiRequest, res: NextApiResponse) => {
             })
         });
 
-        const jsonResponse = await api2pdfResponse.json();
+        const jsonResponse = await api2pdfResponse.json() as { FileUrl: string };
         return res.status(200).json({ FileUrl: jsonResponse.FileUrl });
 
         // res.setHeader('Content-Type', 'application/pdf');
