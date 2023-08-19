@@ -15,9 +15,19 @@ const Preview: React.FC<{ content: string }> = ({ content }) => {
             transform: "scale(0.75)",
             transformOrigin: "top left",
         }}>
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <div style={{ color: 'black' }}>
+                <style>
+                    {`
+                        a {
+                            color: black !important;
+                        }
+                    `}
+                </style>
+                <ReactMarkdown>{content}</ReactMarkdown>
+            </div>
         </div>
     );
 };
 
 export default Preview;
+
