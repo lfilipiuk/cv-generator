@@ -10,16 +10,15 @@ const Home: React.FC = () => {
 
     const generatePDF = async () => {
         try {
-            const response = await axios.post('https://cv.lukaszfilipiuk.com/api/pdf', { text }, { responseType: 'blob' });
-            const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
-
-            const downloadLink = URL.createObjectURL(pdfBlob);
-            window.open(downloadLink, "_blank");
-        } catch (err) {
-            // @ts-ignore
-            setError(err.message);
+            const response = await axios.post('/api/pdf', { text });
+            if (response.data.FileUrl) {
+                window.location.href = response.data.FileUrl;  // This will trigger a download
+            }
+        } catch (err : any) {
+            setError(err.message || 'An error occurred');
         }
     };
+
 
     return (
         <div style={{ display: 'flex', flexDirection: 'row' }}>

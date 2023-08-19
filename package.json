@@ -11,10 +11,8 @@
   "dependencies": {
     "antd": "^5.7.0",
     "axios": "^1.4.0",
-    "chrome-aws-lambda": "^10.1.0",
     "markdown-it": "^13.0.1",
     "next": "13.4.10",
-    "puppeteer-core": "^10.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.7",
