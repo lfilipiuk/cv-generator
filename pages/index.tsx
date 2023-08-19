@@ -10,7 +10,7 @@ const Home: React.FC = () => {
 
     const generatePDF = async () => {
         try {
-            const response = await axios.post('/api/pdf', { text }, { responseType: 'blob' });
+            const response = await axios.post('https://cv.lukaszfilipiuk.com/api/pdf', { text }, { responseType: 'blob' });
             const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
 
             const downloadLink = URL.createObjectURL(pdfBlob);

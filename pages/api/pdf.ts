@@ -1,28 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import markdownIt from 'markdown-it';
 import chrome from 'chrome-aws-lambda';
 import puppeteer from 'puppeteer-core';
-import path from 'path';
-import fs from 'fs';
-
-const md = markdownIt();
+import fetch from 'node-fetch';
 
 const handler =  async (req: NextApiRequest, res: NextApiResponse) => {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ message: 'Only POST requests allowed' });
-    }
 
-    const html = md.render(req.body.text);
+    const response = await fetch('https://cv.lukaszfilipiuk.com/api/markdownToHtml', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: req.body.text }),
+    });
 
-    // Include CSS styles
-    const cssPath = path.join(process.cwd(), 'public', 'resume.css');
-    const cssContent = fs.readFileSync(cssPath, 'utf-8');
-    const fullHtml = `
-        <style>
-            ${cssContent}
-        </style>
-        ${html}
-    `;
+    const { html: fullHtml } = await response.json();
 
     let browser = null;
     try {
