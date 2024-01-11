@@ -1,10 +1,14 @@
 body {
     color: #000000;
     background: #EEEEEE;
-    font: 1em "Times New Roman";
-    line-height: 1.2;
+    font: 1em "Open Sans", sans-serif;
+    line-height: 1.3;
     margin: 40px 0;
 }
+.page-break {
+    page-break-before: always;
+}
+
 #resume {
     margin: 0 auto;
     max-width: 800px;
@@ -13,6 +17,18 @@ body {
     border: 1px solid #CCCCCC;
     box-shadow: 2px 2px 4px #AAAAAA;
     -webkit-box-shadow: 2px 2px 4px #AAAAAA;
+}
+.photo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.photo img {
+    border-radius: 50%; /* Makes the image circular */
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
 }
 h1 {
     text-transform: uppercase;
